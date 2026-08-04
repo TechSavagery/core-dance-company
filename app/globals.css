@@ -1,26 +1,421 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f9fffc;
+  --foreground: #1a1a1a;
+
+  --primary: #e81f27;
+  --primary-foreground: #1f1f1f;
+
+  --secondary: #f5d0d2;
+  --secondary-foreground: #ffffff;
+
+  --muted: #32393e;
+
+  --rgba-color: rgba(255, 255, 255, 0.2);
+  --primary-rgba: rgba(232, 31, 39, 0.2);
+  --secondary-rgba: rgba(245, 208, 210, 0.5);
+  --overlay: rgba(0, 0, 0, 0.4);
+
+  --border: rgba(232, 31, 39, 0.2);
+  --radius: 8px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-border: var(--border);
+  --color-gray: var(--rgba-color);
+  --color-primary_rgba: var(--primary-rgba);
+  --color-secondary_rgba: var(--secondary-rgba);
+  --color-overlay: var(--overlay);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+
+  --font-sans: var(--font-plus-jakarta-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --breakpoint-xm: 340px;
+  --breakpoint-sm: 576px;
+  --breakpoint-2sm: 768px;
+  --breakpoint-md: 960px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+  --breakpoint-3xl: 1600px;
+  --breakpoint-4xl: 1700px;
+  --breakpoint-5xl: 1800px;
+
+  --spacing-2_5: 10px;
+  --spacing-3_5: 20px;
+  --spacing-7_5: 30px;
+  --spacing-8_5: 40px;
+  --spacing-12_5: 50px;
+  --spacing-15: 60px;
+  --spacing-17_5: 70px;
+  --spacing-25: 100px;
+  --spacing-30: 120px;
+
+  --leading-110: 110%;
+  --leading-120: 120%;
+  --leading-135: 135%;
+  --leading-160: 160%;
+
+  --background-image-overlay-liner: linear-gradient(
+    0deg,
+    rgba(245, 208, 210, 0.55) 0%,
+    rgba(245, 208, 210, 0.55) 100%
+  );
+  --background-image-bottom-liner: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.01) 14.06%,
+    rgba(0, 0, 0, 0.7) 70.2%
+  );
+  --background-image-white-liner: linear-gradient(
+    180deg,
+    rgba(217, 217, 217, 0) -21.43%,
+    #fff 153.57%
+  );
+
+  --animate-slideDown: slideDown 0.35s ease-out;
+  --animate-text-line-animation: dash 4s linear forwards, filling 4s ease-in forwards;
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes filling {
+    0% {
+      fill: currentColor;
+      fill-opacity: 0;
+    }
+    90% {
+      fill: currentColor;
+      fill-opacity: 0;
+    }
+    100% {
+      fill: currentColor;
+      fill-opacity: 0;
+    }
   }
 }
 
+/* Tailwind 4 spacing aliases used by theme (dot notation in class names) */
+@utility mt-17\.5 {
+  margin-top: 70px;
+}
+@utility gap-7\.5 {
+  gap: 30px;
+}
+@utility ml-12\.5 {
+  margin-left: 50px;
+}
+@utility pr-7\.5 {
+  padding-right: 30px;
+}
+@utility pt-30 {
+  padding-top: 120px;
+}
+@utility mt-25 {
+  margin-top: 100px;
+}
+@utility -mt-25 {
+  margin-top: -100px;
+}
+@utility -mb-25 {
+  margin-bottom: -100px;
+}
+@utility pt-25 {
+  padding-top: 100px;
+}
+@utility min-w-17\.5 {
+  min-width: 70px;
+}
+@utility h-25 {
+  height: 100px;
+}
+@utility max-h-25 {
+  max-height: 100px;
+}
+@utility leading-110 {
+  line-height: 110%;
+}
+@utility leading-120 {
+  line-height: 120%;
+}
+@utility leading-135 {
+  line-height: 135%;
+}
+@utility leading-160 {
+  line-height: 160%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 160%;
+  font-weight: 400;
+}
+
+* {
+  border-color: var(--border);
+}
+
+@layer utilities {
+  .stroke-dasharray-1000 {
+    stroke-dasharray: 1000;
+  }
+
+  .stroke-dashoffset-1000 {
+    stroke-dashoffset: 1000;
+  }
+
+  .webkit-text-stroke-width-1 {
+    -webkit-text-stroke-width: 1px;
+  }
+
+  .webkit-text-stroke-width-2 {
+    -webkit-text-stroke-width: 2px;
+  }
+
+  .webkit-text-stroke-primary {
+    -webkit-text-stroke-color: var(--primary);
+  }
+
+  .webkit-text-stroke-white {
+    -webkit-text-stroke-color: #ffffff;
+  }
+
+  .webkit-text-stroke-secondary {
+    -webkit-text-stroke-color: var(--secondary);
+  }
+
+  .nav-link.active {
+    background-color: var(--muted);
+    color: var(--secondary-foreground);
+  }
+
+  .hover-underline span {
+    background-repeat: no-repeat;
+    background-image: linear-gradient(180deg, transparent 96%, var(--primary) 0);
+    background-size: 0 100%;
+    transition: background-size 0.4s ease-out;
+  }
+
+  .hover-underline:hover span {
+    background-size: 100% 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .team-card:nth-child(3n) {
+    margin-top: 12px;
+  }
+
+  .team-card:nth-child(3n + 1) {
+    margin-top: -120px;
+  }
+
+  .team-card:nth-child(3n + 2) {
+    margin-top: -210px;
+  }
+}
+
+.index-module_slot__DpPgW {
+  margin-left: -2px;
+  margin-bottom: -9px;
+}
+
+@media (min-width: 768px) {
+  .index-module_slot__DpPgW {
+    margin-left: -6px;
+    margin-bottom: -9px;
+  }
+}
+
+.banner-one .swiper-pagination-bullet-active .title {
+  display: block;
+}
+
+.banner-one .swiper-pagination-bullet-active .active-blut {
+  color: var(--primary);
+}
+
+.project-pagination .swiper-pagination-bullet-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.5s;
+  height: auto;
+}
+
+.swiper-pagination-progressbar-fill {
+  position: absolute;
+  width: 70%;
+  height: 5px;
+  background: var(--primary);
+  left: 0;
+  bottom: 8px;
+  transform-origin: left center;
+}
+
+.animate-fill,
+.animate-fill::after {
+  animation-delay: 0.2s;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animate-fill {
+  position: relative;
+  animation-name: clip-text;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.animate-fill::after {
+  content: "";
+  position: absolute;
+  z-index: 999;
+  inset: 0;
+  background-color: var(--primary);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  pointer-events: none;
+  animation-name: text-revealer;
+}
+
+@keyframes text-revealer {
+  0%,
+  50% {
+    transform-origin: 0 50%;
+  }
+
+  60%,
+  100% {
+    transform-origin: 100% 50%;
+  }
+
+  60% {
+    transform: scaleX(1);
+  }
+
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  width: 100%;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+
+  .container-fluid {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+
+  .container-fluid {
+    padding-right: 25px;
+    padding-left: 25px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+
+  .container-fluid {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  .swiper-pagination-progressbar-fill {
+    width: 90%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+
+  .container-fluid {
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  animation: slideDown 0.35s ease-out;
+  background: rgba(249, 255, 252, 0.95);
+  backdrop-filter: blur(8px);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
