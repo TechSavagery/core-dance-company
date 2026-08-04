@@ -3,6 +3,7 @@ import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { apiVersion, dataset, projectId } from "./src/sanity/env";
 import { schema } from "./src/sanity/schemaTypes";
+import { structure } from "./src/sanity/structure";
 
 export default defineConfig({
   name: "core-dance-company",
@@ -10,6 +11,9 @@ export default defineConfig({
   projectId,
   dataset,
   basePath: "/admin",
-  plugins: [structureTool(), visionTool({ defaultApiVersion: apiVersion })],
+  plugins: [
+    structureTool({ structure }),
+    visionTool({ defaultApiVersion: apiVersion }),
+  ],
   schema,
 });
