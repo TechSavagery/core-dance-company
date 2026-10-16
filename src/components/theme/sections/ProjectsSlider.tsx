@@ -1,21 +1,23 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import CmsImage from "@/src/components/theme/ui/cmsImage";
 import SectionTitle from "@/src/components/theme/ui/sectionTitle";
 import ProgressAndNavigation from "@/src/components/theme/ui/progressAndNavigation";
-import { highlights } from "@/src/content/site";
+import SmartLink from "@/src/components/theme/ui/smartLink";
+import type { HomePage } from "@/src/sanity/lib/queries";
 import { cn } from "@/src/lib/theme/utils";
 
 type Props = {
+  heading: HomePage["highlightsHeading"];
+  cards: NonNullable<HomePage["highlightCards"]>;
   text_muted?: string;
   bg_muted?: string;
 };
 
-export default function ProjectsSlider({ text_muted, bg_muted }: Props) {
+export default function ProjectsSlider({ heading, cards, text_muted, bg_muted }: Props) {
   const pagination = {
     clickable: true,
     el: ".progressbar-pagination-projects",
@@ -25,15 +27,7 @@ export default function ProjectsSlider({ text_muted, bg_muted }: Props) {
   return (
     <section className="pt-20">
       <div className="container-fluid">
-        <SectionTitle
-          sectionName="Highlights"
-          sectionTitle="Why Families Choose CORE"
-          sectionDesc="Technique, pathways, and a studio that feels like home"
-          link="/about"
-          button_text="Our Story"
-          text_muted={text_muted}
-          bg_muted={bg_muted}
-        />
+        <SectionTitle heading={heading} text_muted={text_muted} bg_muted={bg_muted} />
         <div className="pt-14 2sm:pt-20 lg:pt-[120px]">
           <Swiper
             spaceBetween={30}
@@ -46,25 +40,25 @@ export default function ProjectsSlider({ text_muted, bg_muted }: Props) {
             loop
             modules={[Pagination, Navigation]}
           >
-            {highlights.map(({ id, project_name, project_desc, project_img, link }) => (
-              <SwiperSlide key={id}>
+            {cards.map(({ _key, title: project_name, description: project_desc, image, link }) => (
+              <SwiperSlide key={_key}>
                 <div className="overflow-hidden">
-                  <Image
-                    src={project_img}
+                  <CmsImage
+                    image={image}
                     alt={project_name}
                     width={700}
                     height={500}
                     className="h-[360px] w-full object-cover"
                   />
                   <div className="mt-5">
-                    <Link
-                      href={link}
+                    <SmartLink
+                      href={link || "#"}
                       className={cn(
                         `hover-underline text-2xl font-bold text-primary-foreground ${text_muted ?? ""}`
                       )}
                     >
                       <span>{project_name}</span>
-                    </Link>
+                    </SmartLink>
                     <p className={cn(`mt-2 text-lg text-primary-foreground ${text_muted ?? ""}`)}>
                       {project_desc}
                     </p>

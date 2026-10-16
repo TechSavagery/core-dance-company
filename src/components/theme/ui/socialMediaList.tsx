@@ -1,18 +1,10 @@
-import { site } from "@/src/content/site";
-
-const defaultSocials = [
-  { id: "ig", label: "IG", href: site.socials.instagram },
-  { id: "tt", label: "TT", href: site.socials.tiktok },
-  { id: "yt", label: "YT", href: site.socials.youtube },
-] as const;
-
-type Social = { id: string | number; label: string; href: string };
+import type { Social } from "@/src/sanity/lib/content";
 
 type Props = {
-  items?: readonly Social[];
+  items: readonly Social[];
 };
 
-export default function SocialMediaList({ items = defaultSocials }: Props) {
+export default function SocialMediaList({ items }: Props) {
   return (
     <ul className="flex items-center gap-5">
       {items.map((item, index) => {

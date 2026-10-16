@@ -1,38 +1,35 @@
 "use client";
 
-import Image from "next/image";
-import { site } from "@/src/content/site";
 import PlayIcon from "@/src/components/theme/icons/playIcon";
+import CmsImage from "@/src/components/theme/ui/cmsImage";
 import SectionTitle from "@/src/components/theme/ui/sectionTitle";
+import type { HomePage } from "@/src/sanity/lib/queries";
 import { cn } from "@/src/lib/theme/utils";
 
 type Props = {
+  heading: HomePage["videoHeading"];
+  image: HomePage["videoImage"];
+  link?: string;
   text_muted?: string;
   bg_muted?: string;
   after_bg_muted?: string;
 };
 
-export default function VideoPortfolio({ text_muted, bg_muted }: Props) {
+export default function VideoPortfolio({ heading, image, link, text_muted, bg_muted }: Props) {
   return (
     <section className="pt-20">
       <div className="container-fluid">
-        <SectionTitle
-          sectionName="Watch"
-          sectionTitle="See CORE in Action"
-          sectionDesc="Follow us on YouTube and Instagram for studio moments"
-          text_muted={text_muted}
-          bg_muted={bg_muted}
-        />
+        <SectionTitle heading={heading} text_muted={text_muted} bg_muted={bg_muted} />
       </div>
       <div className="container pt-14 2sm:pt-20 lg:pt-[120px]">
         <a
-          href={site.socials.youtube}
+          href={link}
           target="_blank"
           rel="noopener noreferrer"
           className="group relative block overflow-hidden"
         >
-          <Image
-            src="/images/stock/video-silhouettes.jpg"
+          <CmsImage
+            image={image}
             alt="Watch CORE Dance"
             width={1400}
             height={800}

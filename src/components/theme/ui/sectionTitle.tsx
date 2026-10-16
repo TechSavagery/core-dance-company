@@ -2,30 +2,26 @@
 
 import { cn } from "@/src/lib/theme/utils";
 import { useScroll, useTransform, motion } from "framer-motion";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import RightArrow from "@/src/components/theme/icons/rightArrow";
 import ButtonOutline from "./buttons/buttonOutline";
+import SmartLink from "./smartLink";
+import type { SectionHeading } from "@/src/sanity/lib/queries";
 
 type Props = {
-  sectionName: string;
-  sectionTitle: string;
-  sectionDesc: string;
+  heading?: SectionHeading;
   text_muted?: string;
   bg_muted?: string;
-  link?: string;
-  button_text?: string;
 };
 
-export default function SectionTitle({
-  sectionName,
-  sectionTitle,
-  sectionDesc,
-  text_muted,
-  bg_muted,
-  link,
-  button_text,
-}: Props) {
+export default function SectionTitle({ heading, text_muted, bg_muted }: Props) {
+  const {
+    backgroundWord: sectionName,
+    title: sectionTitle,
+    subtitle: sectionDesc,
+    buttonLink: link,
+    buttonLabel: button_text,
+  } = heading ?? {};
   const [scroll, setScroll] = useState(false);
   const [scrollHeight, setScrollHeight] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -75,8 +71,9 @@ export default function SectionTitle({
             className={cn(
               `[font-size:_clamp(48px,7vw,130px)] font-extrabold leading-110 text-primary-foreground mb-5 ${text_muted ?? ""}`
             )}
-            dangerouslySetInnerHTML={{ __html: sectionTitle }}
-          />
+          >
+            {sectionTitle}
+          </h2>
           <span
             className={cn(
               `block w-[300px] h-[1px] bg-primary ${bg_muted ?? ""}`
@@ -91,13 +88,13 @@ export default function SectionTitle({
               {sectionDesc}
             </h5>
             {button_text && link ? (
-              <Link href={link}>
+              <SmartLink href={link}>
                 <ButtonOutline
                   className="2sm:px-10 px-3 after:left-0 after:bg-primary"
                 >
                   {button_text} <RightArrow height={22} width={35} />
                 </ButtonOutline>
-              </Link>
+              </SmartLink>
             ) : null}
           </div>
         </div>

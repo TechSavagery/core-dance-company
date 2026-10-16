@@ -1,21 +1,34 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import CmsImage from "@/src/components/theme/ui/cmsImage";
 import SectionTitle from "@/src/components/theme/ui/sectionTitle";
 import ProgressAndNavigation from "@/src/components/theme/ui/progressAndNavigation";
-import { journeySteps } from "@/src/content/site";
+import type { HomePage, Pathway } from "@/src/sanity/lib/queries";
 import { cn } from "@/src/lib/theme/utils";
 
 type Props = {
+  heading: HomePage["journeyHeading"];
+  pathways: Pathway[];
+  buttonLabel?: string;
+  onHoldLabel?: string;
   text_muted?: string;
   bg_muted?: string;
 };
 
-export default function JourneySlider({ text_muted, bg_muted }: Props) {
+const href = "/classes";
+
+export default function JourneySlider({
+  heading,
+  pathways,
+  buttonLabel,
+  onHoldLabel,
+  text_muted,
+  bg_muted,
+}: Props) {
   const pagination = {
     clickable: true,
     el: ".progressbar-pagination-journey",
@@ -25,15 +38,7 @@ export default function JourneySlider({ text_muted, bg_muted }: Props) {
   return (
     <section className="pt-20">
       <div className="container-fluid">
-        <SectionTitle
-          sectionName="Journey"
-          sectionTitle="The Dancer’s Journey"
-          sectionDesc="Five pathways from Tiny Dancer to CORE Dance Company"
-          link="/classes"
-          button_text="Explore Pathways"
-          bg_muted={bg_muted}
-          text_muted={text_muted}
-        />
+        <SectionTitle heading={heading} bg_muted={bg_muted} text_muted={text_muted} />
         <div className="pt-14 2sm:pt-20 lg:pt-[120px]">
           <Swiper
             spaceBetween={30}
@@ -47,23 +52,23 @@ export default function JourneySlider({ text_muted, bg_muted }: Props) {
             loop
             modules={[Pagination, Navigation]}
           >
-            {journeySteps.map((step) => (
-              <SwiperSlide key={step.id}>
+            {pathways.map((step, index) => (
+              <SwiperSlide key={step._key}>
                 <div className="group">
                   <div className="relative overflow-hidden">
                     <div className="absolute inset-0 z-10 flex items-center justify-center opacity-0 transition-all duration-500 group-hover:opacity-100">
                       <Link
-                        href={step.href}
+                        href={href}
                         className={cn(
                           `relative z-10 overflow-hidden border-2 border-white px-[25px] py-2.5 text-white after:absolute after:left-0 after:top-0 after:bottom-0 after:z-[-1] after:w-0 after:bg-primary after:transition-all after:duration-500 hover:after:w-full`
                         )}
                       >
-                        {step.onHold ? "Check Back Soon" : "Learn More"}
+                        {step.onHold ? onHoldLabel : buttonLabel}
                       </Link>
                     </div>
                     <div className="relative after:absolute after:left-1/2 after:top-1/2 after:h-0 after:w-0 after:-translate-x-1/2 after:-translate-y-1/2 after:bg-[rgba(153,27,30,0.35)] after:opacity-0 after:blur-sm after:transition-all after:duration-500 after:group-hover:h-full after:group-hover:w-full after:group-hover:opacity-100">
-                      <Image
-                        src={step.img}
+                      <CmsImage
+                        image={step.image}
                         alt={step.name}
                         width={500}
                         height={600}
@@ -73,10 +78,11 @@ export default function JourneySlider({ text_muted, bg_muted }: Props) {
                   </div>
                   <div className="mt-[21px]">
                     <p className={cn(`text-sm font-bold text-primary ${text_muted ?? ""}`)}>
-                      {step.number} · {step.ageRange}
+                      {String(index + 1).padStart(2, "0")}
+                      {step.ageRange ? ` · ${step.ageRange}` : ""}
                     </p>
                     <Link
-                      href={step.href}
+                      href={href}
                       className={cn(
                         `hover-underline text-2xl font-semibold leading-160 text-primary-foreground ${text_muted ?? ""}`
                       )}

@@ -1,6 +1,6 @@
 /**
- * Hardcoded site content for studio-owner preview.
- * Replace with Sanity fetches later (schemas already exist).
+ * Starting content imported into Sanity by scripts/import-site-content.mjs.
+ * The website reads from Sanity; editing this file does not change the site.
  *
  * Photos in public/images/stock/ are licensed stock placeholders (see CREDITS.txt
  * there; CC BY / BY-SA images require attribution) until real CORE photos arrive.
