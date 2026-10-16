@@ -1,37 +1,31 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
+import CmsImage from "@/src/components/theme/ui/cmsImage";
 import SectionTitle from "@/src/components/theme/ui/sectionTitle";
-import { teamMembers } from "@/src/content/site";
+import type { HomePage } from "@/src/sanity/lib/queries";
 import { cardSlideAnimation, cn } from "@/src/lib/theme/utils";
 
 type Props = {
+  heading: HomePage["teamHeading"];
+  members: NonNullable<HomePage["teamMembers"]>;
   text_muted?: string;
   bg_muted?: string;
 };
 
-export default function TeamSection({ text_muted, bg_muted }: Props) {
+export default function TeamSection({ heading, members, text_muted, bg_muted }: Props) {
   const variants = cardSlideAnimation();
 
   return (
     <section className="pt-20">
       <div className="container-fluid">
-        <SectionTitle
-          sectionName="Team"
-          sectionTitle="Leadership at CORE"
-          sectionDesc="Guiding dancers with technique, care, and high standards"
-          button_text="Contact Us"
-          link="/contact"
-          text_muted={text_muted}
-          bg_muted={bg_muted}
-        />
+        <SectionTitle heading={heading} text_muted={text_muted} bg_muted={bg_muted} />
       </div>
       <div className="container pt-14 2sm:pt-20 lg:pt-20">
         <div className="grid gap-7 2sm:grid-cols-2 lg:grid-cols-3">
-          {teamMembers.map(({ id, img, name, position }) => (
+          {members.map(({ _key, photo, name, role: position }) => (
             <motion.div
-              key={id}
+              key={_key}
               className="team-card mb-16"
               initial="offscreen"
               whileInView="onscreen"
@@ -39,8 +33,8 @@ export default function TeamSection({ text_muted, bg_muted }: Props) {
               viewport={{ once: true, amount: 0.2 }}
             >
               <div className="group relative hover-underline">
-                <Image
-                  src={img}
+                <CmsImage
+                  image={photo}
                   alt={name}
                   width={500}
                   height={600}

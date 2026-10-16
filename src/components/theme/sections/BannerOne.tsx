@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useRef } from "react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,14 +7,20 @@ import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import RightArrow from "@/src/components/theme/icons/rightArrow";
 import ButtonFill from "@/src/components/theme/ui/buttons/buttonFill";
+import SmartLink from "@/src/components/theme/ui/smartLink";
 import { cn } from "@/src/lib/theme/utils";
-import type { BannerSlide } from "@/src/content/site";
+import { focalPoint, imageUrl } from "@/src/sanity/lib/image";
+import type { HeroSlide } from "@/src/sanity/lib/queries";
 
 type Props = {
-  data: BannerSlide[];
+  data: HeroSlide[];
   text_muted?: string;
   bg_muted?: string;
 };
+
+function escapeHtml(text: string) {
+  return text.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+}
 
 export default function BannerOne({ data, text_muted, bg_muted }: Props) {
   const swiperRef = useRef<SwiperType | null>(null);
@@ -27,7 +32,7 @@ export default function BannerOne({ data, text_muted, bg_muted }: Props) {
       return `
       <span class='${className} flex items-center leading-120'>
          <span class='inline-block lg:text-5xl text-3xl font-extrabold text-transparent webkit-text-stroke-width-1 webkit-text-stroke-primary active-blut sm:mr-2'>0${index + 1}</span>
-         <span class='title hidden max-w-56 sm:block text-sm font-semibold text-primary-foreground md:text-lg'>${data[index]?.title ?? ""}</span>
+         <span class='title hidden max-w-56 sm:block text-sm font-semibold text-primary-foreground md:text-lg'>${escapeHtml(data[index]?.navLabel ?? "")}</span>
       </span>`;
     },
   };
@@ -46,11 +51,14 @@ export default function BannerOne({ data, text_muted, bg_muted }: Props) {
         autoplay={{ delay: 4000 }}
         modules={[Pagination, Navigation, Autoplay]}
       >
-        {data.map(({ id, banner_img, heading_one, heading_two, ctaLabel, ctaHref }) => (
-          <SwiperSlide key={id} className="relative">
+        {data.map(({ _key, image, headingLine1: heading_one, headingLine2: heading_two, buttonLabel: ctaLabel, buttonLink: ctaHref }) => (
+          <SwiperSlide key={_key} className="relative">
             <div
               className="relative bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${banner_img})` }}
+              style={{
+                backgroundImage: `url(${imageUrl(image, 2400)})`,
+                backgroundPosition: focalPoint(image),
+              }}
             >
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/10" />
               <div className="container relative">
@@ -73,19 +81,11 @@ export default function BannerOne({ data, text_muted, bg_muted }: Props) {
                       </text>
                     </svg>
                   </h1>
-                  {ctaHref.startsWith("http") ? (
-                    <a href={ctaHref} className="mt-10 inline-block" target="_blank" rel="noopener noreferrer">
-                      <ButtonFill className="after:z-[1] px-4 after:left-0 sm:px-10">
-                        <span className="relative z-10">{ctaLabel}</span>
-                      </ButtonFill>
-                    </a>
-                  ) : (
-                    <Link href={ctaHref} className="mt-10 inline-block">
-                      <ButtonFill className="after:z-[1] px-4 after:left-0 sm:px-10">
-                        <span className="relative z-10">{ctaLabel}</span>
-                      </ButtonFill>
-                    </Link>
-                  )}
+                  <SmartLink href={ctaHref} className="mt-10 inline-block">
+                    <ButtonFill className="after:z-[1] px-4 after:left-0 sm:px-10">
+                      <span className="relative z-10">{ctaLabel}</span>
+                    </ButtonFill>
+                  </SmartLink>
                 </div>
               </div>
             </div>

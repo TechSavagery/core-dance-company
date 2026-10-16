@@ -1,16 +1,17 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navLinks, site } from "@/src/content/site";
+import { navLinks } from "@/src/lib/nav";
+import type { Settings } from "@/src/sanity/lib/content";
 import ButtonFill from "@/src/components/theme/ui/buttons/buttonFill";
+import CmsImage from "@/src/components/theme/ui/cmsImage";
 import SocialMediaList from "@/src/components/theme/ui/socialMediaList";
 import useStickyHeader from "@/src/hooks/useStickyHeader";
 import MobileNav from "./MobileNav";
 import { cn } from "@/src/lib/theme/utils";
 
-export default function HeaderFour() {
+export default function HeaderFour({ settings }: { settings: Settings }) {
   useStickyHeader();
   const pathName = usePathname();
 
@@ -18,18 +19,16 @@ export default function HeaderFour() {
     <header className="absolute left-0 top-0 z-50 w-full overflow-x-clip bg-gray">
       <div className="hidden xl:block">
         <div className="container-fluid flex items-center justify-between py-4">
-          <p className="mb-0 font-semibold">
-            Welcome to {site.title}. {site.tagline}
-          </p>
+          <p className="mb-0 font-semibold">{settings.topBarMessage}</p>
           <div className="flex items-center gap-5 divide-x divide-primary/40">
             <p className="font-bold">
               <span>Call Us:</span>{" "}
-              <a href={site.phoneHref} className="hover-underline">
-                <span>{site.phone}</span>
+              <a href={settings.phoneHref} className="hover-underline">
+                <span>{settings.phone}</span>
               </a>
             </p>
             <div className="pl-5">
-              <SocialMediaList />
+              <SocialMediaList items={settings.socials} />
             </div>
           </div>
         </div>
@@ -43,9 +42,9 @@ export default function HeaderFour() {
               className="logo inline-block py-3"
               aria-label="CORE Dance home"
             >
-              <Image
-                src="/brand/core-dance-logo-black.png"
-                alt="CORE Dance"
+              <CmsImage
+                image={settings.logo}
+                alt={settings.title}
                 width={198}
                 height={198}
                 className="h-[162px] w-[162px] object-contain"
@@ -72,12 +71,12 @@ export default function HeaderFour() {
                 })}
                 <li className="px-6 py-[22px]">
                   <a
-                    href={site.parentPortalUrl}
+                    href={settings.parentPortalUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <ButtonFill className="px-4 py-2 text-base after:left-0 after:bg-muted sm:px-6 sm:py-2.5 sm:text-lg">
-                      {site.parentPortalLabel}
+                      {settings.parentPortalLabel}
                     </ButtonFill>
                   </a>
                 </li>
@@ -88,7 +87,7 @@ export default function HeaderFour() {
       </div>
 
       <div className="block xl:hidden">
-        <MobileNav />
+        <MobileNav settings={settings} />
       </div>
     </header>
   );

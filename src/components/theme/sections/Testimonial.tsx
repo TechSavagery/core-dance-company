@@ -6,15 +6,17 @@ import "swiper/css";
 import QuoteIcon from "@/src/components/theme/icons/quoteIcon";
 import SectionTitle from "@/src/components/theme/ui/sectionTitle";
 import ProgressAndNavigation from "@/src/components/theme/ui/progressAndNavigation";
-import { testimonials } from "@/src/content/site";
+import type { HomePage } from "@/src/sanity/lib/queries";
 import { cn } from "@/src/lib/theme/utils";
 
 type Props = {
+  heading: HomePage["testimonialsHeading"];
+  items: NonNullable<HomePage["testimonials"]>;
   text_muted?: string;
   bg_muted?: string;
 };
 
-export default function Testimonial({ text_muted, bg_muted }: Props) {
+export default function Testimonial({ heading, items, text_muted, bg_muted }: Props) {
   const pagination = {
     clickable: true,
     el: ".progressbar-pagination-testimonial",
@@ -24,13 +26,7 @@ export default function Testimonial({ text_muted, bg_muted }: Props) {
   return (
     <section className="pt-20">
       <div className="container-fluid">
-        <SectionTitle
-          sectionName="Voices"
-          sectionTitle="What Families Say"
-          sectionDesc="A studio community built on trust and excellence"
-          text_muted={text_muted}
-          bg_muted={bg_muted}
-        />
+        <SectionTitle heading={heading} text_muted={text_muted} bg_muted={bg_muted} />
         <div className="container pt-14 2sm:pt-20 lg:pt-[120px]">
           <Swiper
             spaceBetween={40}
@@ -40,8 +36,8 @@ export default function Testimonial({ text_muted, bg_muted }: Props) {
             loop
             modules={[Pagination, Navigation]}
           >
-            {testimonials.map(({ id, name, position, review }) => (
-              <SwiperSlide key={id}>
+            {items.map(({ _key, name, role: position, quote: review }) => (
+              <SwiperSlide key={_key}>
                 <div className="border border-border bg-secondary/40 p-8 lg:p-12">
                   <QuoteIcon width={48} height={36} />
                   <p

@@ -1,21 +1,23 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import CmsImage from "@/src/components/theme/ui/cmsImage";
 import SectionTitle from "@/src/components/theme/ui/sectionTitle";
 import ProgressAndNavigation from "@/src/components/theme/ui/progressAndNavigation";
-import { newsItems } from "@/src/content/site";
+import SmartLink from "@/src/components/theme/ui/smartLink";
+import type { HomePage } from "@/src/sanity/lib/queries";
 import { cn } from "@/src/lib/theme/utils";
 
 type Props = {
+  heading: HomePage["newsHeading"];
+  cards: NonNullable<HomePage["newsCards"]>;
   text_muted?: string;
   bg_muted?: string;
 };
 
-export default function BlogSlider({ text_muted, bg_muted }: Props) {
+export default function BlogSlider({ heading, cards, text_muted, bg_muted }: Props) {
   const pagination = {
     clickable: true,
     el: ".progressbar-pagination-blog",
@@ -25,13 +27,7 @@ export default function BlogSlider({ text_muted, bg_muted }: Props) {
   return (
     <section className="pt-20">
       <div className="container-fluid">
-        <SectionTitle
-          sectionName="Studio"
-          sectionTitle="What’s Happening"
-          sectionDesc="Recitals, registration, camps, and company season"
-          text_muted={text_muted}
-          bg_muted={bg_muted}
-        />
+        <SectionTitle heading={heading} text_muted={text_muted} bg_muted={bg_muted} />
         <div className="container pt-14 2sm:pt-20 lg:pt-[120px]">
           <Swiper
             spaceBetween={30}
@@ -44,12 +40,11 @@ export default function BlogSlider({ text_muted, bg_muted }: Props) {
             loop
             modules={[Pagination, Navigation]}
           >
-            {newsItems.map((item) => {
-              const isExternal = item.href.startsWith("http");
+            {cards.map((item) => {
               const Card = (
                 <div className="group overflow-hidden">
-                  <Image
-                    src={item.thumb}
+                  <CmsImage
+                    image={item.image}
                     alt={item.title}
                     width={600}
                     height={400}
@@ -57,7 +52,7 @@ export default function BlogSlider({ text_muted, bg_muted }: Props) {
                   />
                   <div className="mt-5">
                     <p className="text-sm font-semibold uppercase tracking-wide text-primary">
-                      {item.tag} · {item.date}
+                      {[item.category, item.when].filter(Boolean).join(" · ")}
                     </p>
                     <h3
                       className={cn(
@@ -74,14 +69,8 @@ export default function BlogSlider({ text_muted, bg_muted }: Props) {
               );
 
               return (
-                <SwiperSlide key={item.id}>
-                  {isExternal ? (
-                    <a href={item.href} target="_blank" rel="noopener noreferrer">
-                      {Card}
-                    </a>
-                  ) : (
-                    <Link href={item.href}>{Card}</Link>
-                  )}
+                <SwiperSlide key={item._key}>
+                  {item.link ? <SmartLink href={item.link}>{Card}</SmartLink> : Card}
                 </SwiperSlide>
               );
             })}

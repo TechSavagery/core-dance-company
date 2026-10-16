@@ -1,17 +1,18 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import MenuIcon from "@/src/components/theme/icons/menuIcon";
 import ButtonFill from "@/src/components/theme/ui/buttons/buttonFill";
+import CmsImage from "@/src/components/theme/ui/cmsImage";
 import useOverflowHidden from "@/src/hooks/useOverflowHidden";
-import { navLinks, site } from "@/src/content/site";
+import { navLinks } from "@/src/lib/nav";
+import type { Settings } from "@/src/sanity/lib/content";
 import { cn } from "@/src/lib/theme/utils";
 
-export default function MobileNav() {
+export default function MobileNav({ settings }: { settings: Settings }) {
   const pathName = usePathname();
   const [isMenuActive, setIsMenuActive] = useState(false);
   useOverflowHidden(isMenuActive);
@@ -26,9 +27,9 @@ export default function MobileNav() {
               className="logo text-primary-foreground"
               aria-label="CORE Dance home"
             >
-              <Image
-                src="/brand/core-dance-logo-black.png"
-                alt="CORE Dance"
+              <CmsImage
+                image={settings.logo}
+                alt={settings.title}
                 width={144}
                 height={144}
                 className="h-24 w-24 object-contain"
@@ -57,9 +58,9 @@ export default function MobileNav() {
               className="text-primary-foreground"
               onClick={() => setIsMenuActive(false)}
             >
-              <Image
-                src="/brand/core-dance-logo-black.png"
-                alt="CORE Dance"
+              <CmsImage
+                image={settings.logo}
+                alt={settings.title}
                 width={144}
                 height={144}
                 className="h-24 w-24 object-contain"
@@ -90,13 +91,13 @@ export default function MobileNav() {
             ))}
             <li className="px-4 pt-5">
               <a
-                href={site.parentPortalUrl}
+                href={settings.parentPortalUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsMenuActive(false)}
               >
                 <ButtonFill className="w-full text-base after:left-0 after:bg-muted sm:text-lg">
-                  {site.parentPortalLabel}
+                  {settings.parentPortalLabel}
                 </ButtonFill>
               </a>
             </li>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { getSettings } from "@/src/sanity/lib/content";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -13,14 +14,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "CORE Dance | San Luis Obispo",
-    template: "%s | CORE Dance",
-  },
-  description:
-    "Come SHINE with us! Dance studio in San Luis Obispo offering classes for ages 2–adult, performing groups, and CORE Dance Company.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSettings();
+  return {
+    title: {
+      default: `${settings.title} | San Luis Obispo`,
+      template: `%s | ${settings.title}`,
+    },
+    description: settings.seoDescription,
+  };
+}
 
 export default function RootLayout({
   children,

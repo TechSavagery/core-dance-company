@@ -24,35 +24,8 @@ const client = createClient({
 
 const ref = (id) => ({ _type: "reference", _ref: id });
 
+// Site settings and page content are imported by scripts/import-site-content.mjs.
 const docs = [
-  {
-    _id: "siteSettings",
-    _type: "siteSettings",
-    title: "CORE Dance",
-    tagline: "Come SHINE with us!",
-    phone: "(805) 541-2669",
-    email: "coredance.cc@gmail.com",
-    address: "882 Ricardo Ct, San Luis Obispo, CA 93401",
-    hours: [
-      { _key: "h1", label: "Monday", time: "9:45–11:45am & 3:30–8pm" },
-      { _key: "h2", label: "Tuesday", time: "3:15–8pm" },
-      { _key: "h3", label: "Wednesday–Thursday", time: "3:30–8pm" },
-      { _key: "h4", label: "Friday", time: "3–7:45pm" },
-      { _key: "h5", label: "Saturday", time: "9am–12pm" },
-      { _key: "h6", label: "Sunday", time: "Closed" },
-    ],
-    parentPortalUrl: "https://app.gostudiopro.com/online/core/",
-    instagramUrl: "https://www.instagram.com/coredance.slo/",
-    tiktokUrl: "https://www.tiktok.com/@coredance.slo",
-    youtubeUrl: "https://www.youtube.com/@COREdanceSLO",
-    facebookUrl: "https://www.facebook.com/",
-    brandClaims: [
-      "Best of SLO — 15 years",
-      "Largest and most diverse performing groups on the Central Coast",
-    ],
-    navCtaLabel: "Parent Portal",
-    navCtaHref: "https://app.gostudiopro.com/online/core/",
-  },
   {
     _id: "tuitionPolicy",
     _type: "tuitionPolicy",
