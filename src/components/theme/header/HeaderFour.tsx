@@ -38,6 +38,20 @@ export default function HeaderFour() {
       <div className="container-fluid hidden border-y border-border xl:block">
         <div className="bottom-navbar">
           <div className="relative flex items-center justify-between">
+            <Link
+              href="/"
+              className="logo inline-block py-3"
+              aria-label="CORE Dance home"
+            >
+              <Image
+                src="/brand/core-dance-logo-black.png"
+                alt="CORE Dance"
+                width={198}
+                height={198}
+                className="h-[162px] w-[162px] object-contain"
+                priority
+              />
+            </Link>
             <nav>
               <ul className="flex items-center">
                 {navLinks.map(({ label, href }) => {
@@ -47,8 +61,8 @@ export default function HeaderFour() {
                       <Link
                         href={href}
                         className={cn(
-                          "nav-link flex items-center gap-2 px-7 py-[34px] text-xl font-medium text-primary-foreground group-hover:bg-muted group-hover:text-secondary-foreground",
-                          active && "active bg-muted text-secondary-foreground"
+                          "nav-link flex items-center gap-2 px-7 py-[34px] text-xl font-medium text-primary-foreground group-hover:bg-primary group-hover:text-secondary-foreground",
+                          active && "active bg-primary text-secondary-foreground"
                         )}
                       >
                         {label}
@@ -69,16 +83,6 @@ export default function HeaderFour() {
                 </li>
               </ul>
             </nav>
-            <Link href="/" className="logo inline-block py-3" aria-label="CORE Dance home">
-              <Image
-                src="/brand/core-dance-logo.png"
-                alt="CORE Dance"
-                width={72}
-                height={74}
-                className="h-14 w-auto object-contain brightness-0"
-                priority
-              />
-            </Link>
           </div>
         </div>
       </div>

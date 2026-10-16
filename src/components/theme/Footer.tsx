@@ -14,11 +14,11 @@ export default function Footer() {
             <div>
               <Link href="/" className="text-primary-foreground inline-block">
                 <Image
-                  src="/brand/core-dance-logo.png"
+                  src="/brand/core-dance-logo-black.png"
                   alt="CORE Dance"
-                  width={200}
-                  height={54}
-                  className="h-14 w-auto object-contain brightness-0"
+                  width={88}
+                  height={88}
+                  className="h-16 w-16 object-contain"
                 />
               </Link>
               <h5 className="xl:text-2xl text-xl font-semibold text-primary-foreground leading-160 pt-2.5 pb-3">
@@ -87,7 +87,15 @@ export default function Footer() {
               Come SHINE with us
             </span>
             <span className="text-sm text-primary-foreground block mt-3 lg:mt-0">
-              &copy; {currentYear}, {site.title}, All Rights Reserved
+              &copy; {currentYear}, {site.title}, All Rights Reserved ·{" "}
+              <a
+                href="/images/stock/CREDITS.txt"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover-underline"
+              >
+                <span>Photo credits</span>
+              </a>
             </span>
           </div>
         </div>

@@ -2,11 +2,8 @@
  * Hardcoded site content for studio-owner preview.
  * Replace with Sanity fetches later (schemas already exist).
  *
- * Theme image naming in public/theme/:
- * shop-image-*.jpg, blog-image-*.jpg, about-image*.jpg, video-image.jpg,
- * hero-*.jpg, team-*.jpg, gallery-*.jpg, project-*.jpg / project-overview-img-*.jpg,
- * feedback-image.jpg. No dedicated service-* or testimonial-* photos —
- * services reuse about-image*; testimonials are text-only.
+ * Photos in public/images/stock/ are licensed stock placeholders (see CREDITS.txt
+ * there; CC BY / BY-SA images require attribution) until real CORE photos arrive.
  */
 
 export const site = {
@@ -33,7 +30,6 @@ export const site = {
     instagram: "https://www.instagram.com/coredance.slo/",
     tiktok: "https://www.tiktok.com/@coredance.slo",
     youtube: "https://www.youtube.com/@COREdanceSLO",
-    facebook: "https://www.facebook.com/",
   },
   hours: [
     { label: "Monday", time: "9:45–11:45am & 3:30–8pm" },
@@ -43,6 +39,7 @@ export const site = {
     { label: "Saturday", time: "9am–12pm" },
     { label: "Sunday", time: "Closed" },
   ],
+  aboutImage: "/images/stock/about-ballerina.jpg",
   story: {
     heading: "Our Story",
     paragraphs: [
@@ -86,7 +83,7 @@ export const bannerSlides: BannerSlide[] = [
     title: "Come SHINE with us",
     heading_one: "Shine",
     heading_two: "With Us",
-    banner_img: "/theme/hero-4.jpg",
+    banner_img: "/images/stock/hero-recital-red.webp",
     ctaLabel: "Register Now",
     ctaHref: site.registerUrl,
   },
@@ -95,7 +92,7 @@ export const bannerSlides: BannerSlide[] = [
     title: "Get inspired with the very best",
     heading_one: "Inspired",
     heading_two: "To Dance",
-    banner_img: "/theme/hero-2.jpg",
+    banner_img: "/images/stock/hero-studio-kicks.jpg",
     ctaLabel: "View Schedule",
     ctaHref: site.scheduleUrl,
   },
@@ -104,7 +101,7 @@ export const bannerSlides: BannerSlide[] = [
     title: "Best of SLO — 15 years",
     heading_one: "Best of",
     heading_two: "SLO",
-    banner_img: "/theme/hero-3.jpg",
+    banner_img: "/images/stock/hero-stage-pink.jpg",
     ctaLabel: "Our Story",
     ctaHref: "/about",
   },
@@ -130,7 +127,7 @@ export const journeySteps: JourneyStep[] = [
     summary:
       "Themed short series for our youngest dancers, typically including a costume and performance experience. Creative movement and ballet based, 5–10 weeks.",
     href: "/classes",
-    img: "/theme/shop-image-1.jpg",
+    img: "/images/stock/journey-tiny-dancer.jpg",
   },
   {
     id: 2,
@@ -140,7 +137,7 @@ export const journeySteps: JourneyStep[] = [
     summary:
       "Introductory series for new dancers building foundational skills before committing to month-to-month classes. Currently on hold — check back soon.",
     href: "/classes",
-    img: "/theme/shop-image-2.jpg",
+    img: "/images/stock/journey-beginning.jpg",
     onHold: true,
   },
   {
@@ -151,7 +148,7 @@ export const journeySteps: JourneyStep[] = [
     summary:
       "Ongoing technique classes across styles and levels, with multiple performance opportunities including our annual recital Encore in June.",
     href: "/classes",
-    img: "/theme/shop-image-3.jpg",
+    img: "/images/stock/journey-month-to-month.jpg",
   },
   {
     id: 4,
@@ -161,7 +158,7 @@ export const journeySteps: JourneyStep[] = [
     summary:
       "Introductory performing groups with local performances and typically one convention per year.",
     href: "/classes",
-    img: "/theme/shop-image-4.jpg",
+    img: "/images/stock/journey-performance-company.webp",
   },
   {
     id: 5,
@@ -171,7 +168,7 @@ export const journeySteps: JourneyStep[] = [
     summary:
       "Audition-based competitive company with 2–4 competitions and conventions each season plus local performances.",
     href: "/classes",
-    img: "/theme/shop-image-5.jpg",
+    img: "/images/stock/journey-dance-company.jpg",
   },
 ];
 
@@ -180,19 +177,19 @@ export const teamMembers = [
     id: 1,
     name: "Isabella Lund",
     position: "Owner & Company Director",
-    img: "/theme/team-1.jpg",
+    img: "/images/stock/team-director.webp",
   },
   {
     id: 2,
     name: "Faculty",
     position: "Technique & Performance",
-    img: "/theme/team-2.jpg",
+    img: "/images/stock/team-faculty.jpg",
   },
   {
     id: 3,
     name: "Company Coaches",
     position: "Competitive Training",
-    img: "/theme/team-3.jpg",
+    img: "/images/stock/team-coaches.jpg",
   },
 ] as const;
 
@@ -223,7 +220,7 @@ export const highlights = [
     project_name: "Technique First",
     project_desc:
       "Ballet-based training that builds a strong foundation for every style.",
-    project_img: "/theme/project-overview-img-1.jpg",
+    project_img: "/images/stock/highlight-technique.jpg",
     client: "All Levels",
     area: "Studio",
     project_year: "Ongoing",
@@ -235,7 +232,7 @@ export const highlights = [
     project_name: "Performance Pathways",
     project_desc:
       "From Tiny Dancer showcases to competitive company — grow at your pace.",
-    project_img: "/theme/project-overview-img-2.jpg",
+    project_img: "/images/stock/highlight-encore.webp",
     client: "Performing Groups",
     area: "SLO",
     project_year: "Seasonal",
@@ -247,7 +244,7 @@ export const highlights = [
     project_name: "Central Coast Home",
     project_desc:
       "Clean, modern studios in San Luis Obispo welcoming ages 2 through adult.",
-    project_img: "/theme/project-overview-img-3.jpg",
+    project_img: "/images/stock/highlight-studio.jpg",
     client: "Families",
     area: "882 Ricardo Ct",
     project_year: "Since 2010",
@@ -259,7 +256,7 @@ export const highlights = [
     project_name: "Encore & Beyond",
     project_desc:
       "Annual recital and local performances that celebrate every dancer’s progress.",
-    project_img: "/theme/project-overview-img-4.jpg",
+    project_img: "/images/stock/gallery-community.webp",
     client: "All Dancers",
     area: "SLO",
     project_year: "June",
@@ -273,35 +270,35 @@ export const galleryItems = [
     id: "01",
     img_title: "Studio Life",
     img_desc: "Energy, focus, and friendship in every class.",
-    img: "/theme/gallery-1.jpg",
+    img: "/images/stock/gallery-studio-life.jpg",
     link: "/about",
   },
   {
     id: "02",
     img_title: "On Stage",
     img_desc: "Recitals and competitions that celebrate every dancer.",
-    img: "/theme/gallery-2.jpg",
+    img: "/images/stock/gallery-on-stage.webp",
     link: "/about",
   },
   {
     id: "03",
     img_title: "Technique",
     img_desc: "Strong foundations across styles and ages.",
-    img: "/theme/gallery-3.jpg",
+    img: "/images/stock/gallery-technique.jpg",
     link: "/classes",
   },
   {
     id: "04",
     img_title: "Company",
     img_desc: "Competitive tracks that push excellence.",
-    img: "/theme/gallery-4.jpg",
+    img: "/images/stock/gallery-company.jpg",
     link: "/classes",
   },
   {
     id: "05",
     img_title: "Community",
     img_desc: "A studio family in San Luis Obispo.",
-    img: "/theme/gallery-5.jpg",
+    img: "/images/stock/gallery-community.webp",
     link: "/contact",
   },
 ] as const;
@@ -352,19 +349,19 @@ export const services = [
     id: 1,
     title: "Recreational Classes",
     desc: "Month-to-month technique across jazz, ballet, tap, hip hop, and more.",
-    img: "/theme/about-image.jpg",
+    img: "/images/stock/service-recreational.jpg",
   },
   {
     id: 2,
     title: "Performing Groups",
     desc: "CORE Babies, Minis, and Pre-Company for local stage experience.",
-    img: "/theme/about-image-2.jpg",
+    img: "/images/stock/service-performing.jpg",
   },
   {
     id: 3,
     title: "Competitive Company",
     desc: "Audition-based CORE Dance Company for serious dancers ages 9+.",
-    img: "/theme/about-image-3.jpg",
+    img: "/images/stock/service-company.jpg",
   },
 ] as const;
 
@@ -376,7 +373,7 @@ export const newsItems = [
     tag: "Events",
     excerpt:
       "Our annual recital — the highlight of the season for month-to-month dancers.",
-    thumb: "/theme/blog-image-1.jpg",
+    thumb: "/images/stock/news-encore.webp",
     href: "/contact",
   },
   {
@@ -386,7 +383,7 @@ export const newsItems = [
     tag: "Studio",
     excerpt:
       "View schedules, register for classes, and manage your dancer account online.",
-    thumb: "/theme/blog-image-2.jpg",
+    thumb: "/images/stock/news-parent-portal.jpg",
     href: site.parentPortalUrl,
   },
   {
@@ -396,7 +393,7 @@ export const newsItems = [
     tag: "Camps",
     excerpt:
       "Themed camps and intensives for dancers of all ages — check back for dates.",
-    thumb: "/theme/blog-image-3.jpg",
+    thumb: "/images/stock/news-camps.webp",
     href: "/classes",
   },
   {
@@ -406,7 +403,7 @@ export const newsItems = [
     tag: "Company",
     excerpt:
       "CORE Dance Company dancers train, perform locally, and compete throughout the year.",
-    thumb: "/theme/blog-image-4.jpg",
+    thumb: "/images/stock/news-company.jpg",
     href: "/classes",
   },
 ] as const;
@@ -432,6 +429,24 @@ export const testimonials = [
     position: "Adult Classes",
     review:
       "Welcoming classes for adults too — I finally found a studio that meets me where I am.",
+  },
+] as const;
+
+export const leadershipTimeline = [
+  {
+    year: "2010",
+    title: "CORE Is Founded",
+    desc: "Leslie Baumberger, Stacy Millard, Rose Patti and Zheila Pouraghabagher open CORE when American Dance closes after 38 years.",
+  },
+  {
+    year: "2018",
+    title: "A New Chapter",
+    desc: "Alexa Von Der Hoff becomes Studio Owner, taking the customer experience to the next level for seven years.",
+  },
+  {
+    year: "2026",
+    title: "Isabella Takes the Lead",
+    desc: "Isabella Lund becomes Studio Owner in January 2026, excited to lead CORE for years to come.",
   },
 ] as const;
 

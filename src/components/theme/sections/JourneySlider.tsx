@@ -55,19 +55,19 @@ export default function JourneySlider({ text_muted, bg_muted }: Props) {
                       <Link
                         href={step.href}
                         className={cn(
-                          `relative z-10 overflow-hidden border-2 border-white px-[25px] py-2.5 text-white after:absolute after:left-0 after:top-0 after:bottom-0 after:z-[-1] after:w-0 after:bg-primary after:transition-all after:duration-500 hover:after:w-full ${bg_muted ? `after:${bg_muted}` : ""}`
+                          `relative z-10 overflow-hidden border-2 border-white px-[25px] py-2.5 text-white after:absolute after:left-0 after:top-0 after:bottom-0 after:z-[-1] after:w-0 after:bg-primary after:transition-all after:duration-500 hover:after:w-full`
                         )}
                       >
                         {step.onHold ? "Check Back Soon" : "Learn More"}
                       </Link>
                     </div>
-                    <div className="relative after:absolute after:left-1/2 after:top-1/2 after:h-0 after:w-0 after:-translate-x-1/2 after:-translate-y-1/2 after:bg-[rgba(232,31,39,0.35)] after:opacity-0 after:blur-sm after:transition-all after:duration-500 after:group-hover:h-full after:group-hover:w-full after:group-hover:opacity-100">
+                    <div className="relative after:absolute after:left-1/2 after:top-1/2 after:h-0 after:w-0 after:-translate-x-1/2 after:-translate-y-1/2 after:bg-[rgba(153,27,30,0.35)] after:opacity-0 after:blur-sm after:transition-all after:duration-500 after:group-hover:h-full after:group-hover:w-full after:group-hover:opacity-100">
                       <Image
                         src={step.img}
                         alt={step.name}
                         width={500}
                         height={600}
-                        className="h-full max-h-[506px] w-full object-cover"
+                        className="aspect-[4/5] w-full object-cover"
                       />
                     </div>
                   </div>

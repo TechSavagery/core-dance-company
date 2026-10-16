@@ -4,7 +4,7 @@
   --background: #f9fffc;
   --foreground: #1a1a1a;
 
-  --primary: #e81f27;
+  --primary: #991b1e;
   --primary-foreground: #1f1f1f;
 
   --secondary: #f5d0d2;
@@ -13,11 +13,11 @@
   --muted: #32393e;
 
   --rgba-color: rgba(255, 255, 255, 0.2);
-  --primary-rgba: rgba(232, 31, 39, 0.2);
+  --primary-rgba: rgba(153, 27, 30, 0.2);
   --secondary-rgba: rgba(245, 208, 210, 0.5);
   --overlay: rgba(0, 0, 0, 0.4);
 
-  --border: rgba(232, 31, 39, 0.2);
+  --border: rgba(153, 27, 30, 0.2);
   --radius: 8px;
 }
 
@@ -216,7 +216,7 @@ body {
   }
 
   .nav-link.active {
-    background-color: var(--muted);
+    background-color: var(--primary);
     color: var(--secondary-foreground);
   }
 
@@ -234,15 +234,15 @@ body {
 
 @media (min-width: 1024px) {
   .team-card:nth-child(3n) {
-    margin-top: 12px;
+    margin-top: 220px;
   }
 
   .team-card:nth-child(3n + 1) {
-    margin-top: -120px;
+    margin-top: 90px;
   }
 
   .team-card:nth-child(3n + 2) {
-    margin-top: -210px;
+    margin-top: 0;
   }
 }
 
@@ -258,8 +258,10 @@ body {
   }
 }
 
-.banner-one .swiper-pagination-bullet-active .title {
-  display: block;
+@media (min-width: 640px) {
+  .banner-one .swiper-pagination-bullet-active .title {
+    display: block;
+  }
 }
 
 .banner-one .swiper-pagination-bullet-active .active-blut {

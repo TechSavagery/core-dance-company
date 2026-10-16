@@ -27,7 +27,7 @@ export default function TeamSection({ text_muted, bg_muted }: Props) {
           bg_muted={bg_muted}
         />
       </div>
-      <div className="container pt-14 2sm:pt-20 lg:pt-[340px]">
+      <div className="container pt-14 2sm:pt-20 lg:pt-20">
         <div className="grid gap-7 2sm:grid-cols-2 lg:grid-cols-3">
           {teamMembers.map(({ id, img, name, position }) => (
             <motion.div
@@ -44,7 +44,7 @@ export default function TeamSection({ text_muted, bg_muted }: Props) {
                   alt={name}
                   width={500}
                   height={600}
-                  className="h-full w-full object-cover"
+                  className="aspect-[5/6] w-full object-cover"
                 />
                 <div className="absolute bottom-[-10%] left-0 min-w-[295px] bg-secondary transition-all duration-500 group-hover:min-w-full">
                   <div className="px-[27px] pb-[18px] pt-[9px]">

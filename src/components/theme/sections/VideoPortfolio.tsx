@@ -32,7 +32,7 @@ export default function VideoPortfolio({ text_muted, bg_muted }: Props) {
           className="group relative block overflow-hidden"
         >
           <Image
-            src="/theme/video-image.jpg"
+            src="/images/stock/video-silhouettes.jpg"
             alt="Watch CORE Dance"
             width={1400}
             height={800}
