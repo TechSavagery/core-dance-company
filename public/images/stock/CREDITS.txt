@@ -1,0 +1,31 @@
+﻿Stock photo credits (placeholder imagery for the client preview).
+Replace with real CORE Dance photos before launch.
+
+hero-recital-red - "Holiday dance recital Jaycee Park" by Unknown - CC0 (public domain) - https://www.rawpixel.com/image/9677131/image-face-person-public-domain
+hero-studio-kicks - "Ballet /a practice/" by SaraRistic - CC BY 2.0 - https://www.flickr.com/photos/129002228@N04/16005151934
+hero-stage-pink - "Dance!" by Clearly Ambiguous - CC BY 2.0 - https://www.flickr.com/photos/84617037@N00/165316414
+about-ballerina - "Ballet Dance" by Hudson Hintze - CC0 (public domain) - https://stocksnap.io/photo/ballet-dance-N9WJOUYWZ3
+service-recreational - "amelia-dance-class-12-2010-21" by guruscotty - CC BY 2.0 - https://www.flickr.com/photos/31771416@N00/7790168564
+service-performing - "Ballerina Baby Bun" by daspader - CC BY 2.0 - https://www.flickr.com/photos/62492448@N05/7669262460
+service-company - "Ballerina Baby Bun" by daspader - CC BY 2.0 - https://www.flickr.com/photos/62492448@N05/7669263966
+gallery-studio-life - "Ballet /a practice/" by SaraRistic - CC BY 2.0 - https://www.flickr.com/photos/129002228@N04/16007569113
+gallery-on-stage - "Montgomery Ballet performs New Ballet" by libraryofcongress - CC0 (public domain) - https://www.rawpixel.com/image/6290990/photo-image-people-public-domain-united-states
+gallery-technique - "GST_DSC_1261" by gabrielsaldana - CC BY-SA 2.0 - https://www.flickr.com/photos/99058473@N00/9447406779
+gallery-company - "MVCAN-Do Revue - Hip Hop Dancers" by fabola - CC BY-SA 2.0 - https://www.flickr.com/photos/44124339301@N01/24608896778
+gallery-community - "Holiday dance recital Jaycee Park" by Unknown - CC0 (public domain) - https://www.rawpixel.com/image/9658826/image-person-public-domain-kid
+team-director - "Free ballet slippers image" by Unknown - CC0 (public domain) - https://www.rawpixel.com/image/5919635/photo-image-aesthetic-public-domain-free
+team-faculty - "Bricks Ballet" by Sarah Cervantes - CC0 (public domain) - https://stocksnap.io/photo/bricks-ballet-ASJXV7ALQ5
+team-coaches - "Ballet /a practice/" by SaraRistic - CC BY 2.0 - https://www.flickr.com/photos/129002228@N04/16007568033
+journey-tiny-dancer - "Dance Class" by anjanettew - CC BY-SA 2.0 - https://www.flickr.com/photos/9173558@N05/4972521179
+journey-beginning - "amelia-dance-class-12-2010-17" by guruscotty - CC BY 2.0 - https://www.flickr.com/photos/31771416@N00/7790163458
+journey-month-to-month - "7.9.14 3 Pisek Roma Dance Rehearsal 110" by donald judge - CC BY 2.0 - https://www.flickr.com/photos/27911027@N00/15169431291
+journey-performance-company - "Holiday dance recital Jaycee Park" by Unknown - CC0 (public domain) - https://www.rawpixel.com/image/9658501/image-person-public-domain-kid
+journey-dance-company - "MVCAN-Do Revue - RoCo Hip Hop Dancers" by fabola - CC BY-SA 2.0 - https://www.flickr.com/photos/44124339301@N01/24608904828
+highlight-technique - "Ballet /a practice/" by SaraRistic - CC BY 2.0 - https://www.flickr.com/photos/129002228@N04/16626672222
+highlight-studio - "Ballet /a practice/" by SaraRistic - CC BY 2.0 - https://www.flickr.com/photos/129002228@N04/16601360816
+highlight-encore - "Students perform their dances Nikolaisaal" by usbotschaftberlin - CC0 (public domain) - https://www.rawpixel.com/image/8761454/photo-image-public-domain-person
+news-encore - "Holiday dance recital Jaycee Park" by Unknown - CC0 (public domain) - https://www.rawpixel.com/image/9658618/image-person-public-domain-kid
+news-parent-portal - "tap shoes" by Hat4Rain - CC BY 2.0 - https://www.flickr.com/photos/10376354@N08/2998815864
+news-camps - "Holiday dance recital Jaycee Park" by Unknown - CC0 (public domain) - https://www.rawpixel.com/image/9677124/image-face-person-public-domain
+news-company - "MVCAN-Do Revue - RoCo Hip Hop Dancers" by fabola - CC BY-SA 2.0 - https://www.flickr.com/photos/44124339301@N01/38449171932
+video-silhouettes - "The Ballet Dancers Outlines" by mmockingbird - CC BY-SA 2.0 - https://www.flickr.com/photos/63714804@N04/15909542962
