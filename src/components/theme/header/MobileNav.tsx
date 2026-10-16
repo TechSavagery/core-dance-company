@@ -2,14 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import MenuIcon from "@/src/components/theme/icons/menuIcon";
 import ButtonFill from "@/src/components/theme/ui/buttons/buttonFill";
 import useOverflowHidden from "@/src/hooks/useOverflowHidden";
 import { navLinks, site } from "@/src/content/site";
+import { cn } from "@/src/lib/theme/utils";
 
 export default function MobileNav() {
+  const pathName = usePathname();
   const [isMenuActive, setIsMenuActive] = useState(false);
   useOverflowHidden(isMenuActive);
 
@@ -18,6 +21,20 @@ export default function MobileNav() {
       <div className="relative overflow-x-clip bg-[#f9f9f9] px-2.5">
         <div className="container-fluid">
           <div className="flex items-center justify-between py-4">
+            <Link
+              href="/"
+              className="logo text-primary-foreground"
+              aria-label="CORE Dance home"
+            >
+              <Image
+                src="/brand/core-dance-logo-black.png"
+                alt="CORE Dance"
+                width={144}
+                height={144}
+                className="h-24 w-24 object-contain"
+                priority
+              />
+            </Link>
             <button
               type="button"
               className="text-primary-foreground"
@@ -26,16 +43,6 @@ export default function MobileNav() {
             >
               <MenuIcon className="cursor-pointer" />
             </button>
-            <Link href="/" className="logo text-primary-foreground" aria-label="CORE Dance home">
-              <Image
-                src="/brand/core-dance-logo.png"
-                alt="CORE Dance"
-                width={64}
-                height={66}
-                className="h-12 w-auto object-contain brightness-0"
-                priority
-              />
-            </Link>
           </div>
         </div>
 
@@ -51,11 +58,11 @@ export default function MobileNav() {
               onClick={() => setIsMenuActive(false)}
             >
               <Image
-                src="/brand/core-dance-logo.png"
+                src="/brand/core-dance-logo-black.png"
                 alt="CORE Dance"
-                width={64}
-                height={66}
-                className="h-12 w-auto object-contain brightness-0"
+                width={144}
+                height={144}
+                className="h-24 w-24 object-contain"
               />
             </Link>
             <button
@@ -72,7 +79,10 @@ export default function MobileNav() {
                 <Link
                   href={href}
                   onClick={() => setIsMenuActive(false)}
-                  className="nav-link flex items-center gap-2 px-4 py-4 text-xl font-medium text-primary-foreground transition-all duration-500"
+                  className={cn(
+                    "nav-link flex items-center gap-2 px-4 py-4 text-xl font-medium text-primary-foreground transition-all duration-500 hover:bg-primary hover:text-secondary-foreground",
+                    pathName === href && "active bg-primary text-secondary-foreground"
+                  )}
                 >
                   {label}
                 </Link>

@@ -29,7 +29,7 @@ export default function AboutOne({ text_muted, bg_muted }: Props) {
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div className="relative overflow-hidden">
             <Image
-              src="/theme/about-image.jpg"
+              src={site.aboutImage}
               alt="CORE Dance studio"
               width={800}
               height={900}
@@ -50,7 +50,7 @@ export default function AboutOne({ text_muted, bg_muted }: Props) {
               {site.story.ownerName} — {site.story.ownerTitle}
             </p>
             <Link href="/about" className="mt-8 inline-block">
-              <ButtonOutline className={cn(`after:left-0 after:${bg_muted ?? "bg-muted"}`)}>
+              <ButtonOutline className="after:left-0 after:bg-primary">
                 Learn More <RightArrow width={35} height={22} />
               </ButtonOutline>
             </Link>

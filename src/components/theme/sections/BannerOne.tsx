@@ -25,9 +25,9 @@ export default function BannerOne({ data, text_muted, bg_muted }: Props) {
     el: ".hero-pagination",
     renderBullet(index: number, className: string) {
       return `
-      <span class='${className} flex leading-120'>
-         <span class='inline-block mr-2 lg:text-5xl text-3xl font-extrabold text-transparent webkit-text-stroke-width-1 webkit-text-stroke-primary active-blut'>0${index + 1}</span>
-         <span class='title md:text-lg text-sm font-semibold text-primary-foreground hidden sm:block sm:max-w-56 max-w-48'> ${data[index]?.title ?? ""}</span>
+      <span class='${className} flex items-center leading-120'>
+         <span class='inline-block lg:text-5xl text-3xl font-extrabold text-transparent webkit-text-stroke-width-1 webkit-text-stroke-primary active-blut sm:mr-2'>0${index + 1}</span>
+         <span class='title hidden max-w-56 sm:block text-sm font-semibold text-primary-foreground md:text-lg'>${data[index]?.title ?? ""}</span>
       </span>`;
     },
   };
@@ -49,11 +49,12 @@ export default function BannerOne({ data, text_muted, bg_muted }: Props) {
         {data.map(({ id, banner_img, heading_one, heading_two, ctaLabel, ctaHref }) => (
           <SwiperSlide key={id} className="relative">
             <div
-              className="bg-cover bg-center bg-no-repeat"
+              className="relative bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${banner_img})` }}
             >
-              <div className="container">
-                <div className="pb-[250px] pt-[150px] xl:pt-[200px]">
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/10" />
+              <div className="container relative">
+                <div className="pb-[200px] pt-[180px] sm:pb-[250px] xl:pt-[290px]">
                   <h1 className="relative text-5xl font-extrabold leading-[100%] xm:text-7xl sm:text-[100px] 2sm:text-[130px] lg:text-[170px] xl:text-[200px]">
                     <span
                       className={cn(
@@ -74,13 +75,13 @@ export default function BannerOne({ data, text_muted, bg_muted }: Props) {
                   </h1>
                   {ctaHref.startsWith("http") ? (
                     <a href={ctaHref} className="mt-10 inline-block" target="_blank" rel="noopener noreferrer">
-                      <ButtonFill className={cn(`after:z-[1] px-4 after:left-0 sm:px-10 after:${bg_muted ?? "bg-muted"}`)}>
+                      <ButtonFill className="after:z-[1] px-4 after:left-0 sm:px-10">
                         <span className="relative z-10">{ctaLabel}</span>
                       </ButtonFill>
                     </a>
                   ) : (
                     <Link href={ctaHref} className="mt-10 inline-block">
-                      <ButtonFill className={cn(`after:z-[1] px-4 after:left-0 sm:px-10 after:${bg_muted ?? "bg-muted"}`)}>
+                      <ButtonFill className="after:z-[1] px-4 after:left-0 sm:px-10">
                         <span className="relative z-10">{ctaLabel}</span>
                       </ButtonFill>
                     </Link>
@@ -90,15 +91,15 @@ export default function BannerOne({ data, text_muted, bg_muted }: Props) {
             </div>
           </SwiperSlide>
         ))}
-        <div className="absolute bottom-0 right-0 z-40 flex justify-between">
-          <div className="hero-pagination flex max-w-[800px] gap-5 bg-[rgba(245,208,210,0.35)] px-2 py-10 backdrop-blur-md sm:px-5 xl:gap-8 xl:px-9 xl:py-[61px]" />
+        <div className="absolute bottom-0 left-0 right-0 z-40 flex justify-between sm:left-auto">
+          <div className="hero-pagination flex flex-1 items-center justify-around bg-[rgba(245,208,210,0.35)] px-4 backdrop-blur-md sm:max-w-[800px] sm:flex-none sm:justify-start sm:gap-5 sm:px-5 xl:gap-8 xl:px-9" />
           <div className="flex h-[136px] min-w-[70px] flex-col sm:w-[90px] xl:h-[181px]">
             <button
               type="button"
               aria-label="Next slide"
               onClick={() => swiperRef.current?.slideNext()}
               className={cn(
-                `flex h-1/2 items-center justify-center bg-primary text-secondary-foreground ${bg_muted ?? ""}`
+                "flex h-1/2 items-center justify-center bg-primary text-secondary-foreground"
               )}
             >
               <RightArrow width={35} height={22} />

@@ -4,7 +4,6 @@ const defaultSocials = [
   { id: "ig", label: "IG", href: site.socials.instagram },
   { id: "tt", label: "TT", href: site.socials.tiktok },
   { id: "yt", label: "YT", href: site.socials.youtube },
-  { id: "fb", label: "FB", href: site.socials.facebook },
 ] as const;
 
 type Social = { id: string | number; label: string; href: string };
